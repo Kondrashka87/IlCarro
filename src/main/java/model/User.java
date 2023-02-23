@@ -9,7 +9,8 @@ public class User
 
     public User withName(String name)
     {
-        return new User();
+        Name = name;
+        return this;
     }
 
     public User withLastname(String lastname)

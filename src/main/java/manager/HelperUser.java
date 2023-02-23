@@ -18,9 +18,8 @@ public class HelperUser extends HelperBase {
 
     public void openRegistrationForm()
     {
-       pause(500);
-      // click(By.xpath("//a[text()=' Sign up ']"));
-       click(By.cssSelector("[href^='/registration']"));
+       click(By.xpath("//a[text()=' Sign up ']"));
+       //click(By.cssSelector("[href^='/registration']"));
     }
 
     public void fillLoginRegistrationForm(String email, String password)
@@ -45,7 +44,7 @@ public class HelperUser extends HelperBase {
     }
 
     public boolean isLogged() {
-        return isElementPresent(By.xpath("//button[text()=' Logout ']"));
+        return isElementPresent(By.xpath("//a[text()=' Logout ']"));
        // return isElementPresent(By.cssSelector("div.header a:nth-child(5)"));
     }
 
@@ -78,10 +77,10 @@ public class HelperUser extends HelperBase {
         return wd.findElement(By.cssSelector(".error")).getText().contains(message);
     }
 
-    public String getErrorFormatPassword()
-    {
-        return wd.findElement(By.cssSelector("div.error.ng-star-inserted")).getText();
-    }
+//    public String getErrorFormatPassword()
+//    {
+//        return wd.findElement(By.cssSelector("div.error.ng-star-inserted")).getText();
+//    }
 
     public boolean isYallaButtonNotActive()
     {
@@ -94,26 +93,27 @@ public class HelperUser extends HelperBase {
         //click(By.id("terms-of-use")); ne rabotaet
         //click(By.cssSelector("label[for='terms-of-use']"));
         //click(By.cssSelector("div[class='checkbox-container']"));toze mozno
-        click(By.cssSelector(".checkbox-container"));
+        if(!wd.findElement(By.id("terms-of-use")).isSelected())
+        {
+            click(By.cssSelector(".checkbox-container"));
+        }
+
     }
 
     public void checkPolicyXY()
     {
         Dimension size = wd.manage().window().getSize();
-        System.out.println("Window Height" + size.getHeight());
-        System.out.println("Window Width" + size.getWidth());
+        System.out.println("Window Height "+ size.getHeight());
+        System.out.println("Window Width "+ size.getWidth());
 
-        WebElement label = wd.findElement(By.cssSelector("label[for='terms-of-use']"));
+        WebElement label =wd.findElement(By.cssSelector("label[for='terms-of-use']"));
 
         Rectangle rect = label.getRect();
-
         int xOffset = rect.getWidth()/2;
-        Actions actions = new Actions(wd);
 
-        if(!wd.findElement(By.id("terms-of-use")).isSelected())
-        {
-            actions.moveToElement(label, -xOffset, 0).click().release().perform();
-        }
+        Actions actions = new Actions(wd);
+        actions.moveToElement(label,-xOffset,0).click().release().perform();
+
 
     }
 

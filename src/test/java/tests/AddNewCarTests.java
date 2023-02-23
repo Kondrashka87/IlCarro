@@ -42,6 +42,8 @@ public class AddNewCarTests extends TestBase
 
                 .build();
 
+        logger.info("Tests start with data : " + car.toString());
+
         app.getHelperCar().openCarForm();
         app.getHelperCar().fillCarForm(car);
         app.getHelperCar().attachPhoto("C:\\Users\\size7\\Desktop\\Education\\QA\\IlCarro\\corvett.jpeg");

@@ -1,5 +1,6 @@
 package tests;
 
+import manager.DataProviderUser;
 import model.User;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -27,6 +28,17 @@ public class LoginTests extends TestBase
     }
     @Test
     public void loginSuccessModel()
+    {
+        User user = new User().withEmail("doshka@mail.ru").withPassword("Koshka12$");
+
+        app.getHelperUser().openLoginRegistrationForm();
+        app.getHelperUser().fillLoginRegistrationForm(user);
+        app.getHelperUser().submit();
+        Assert.assertEquals(app.getHelperUser().getMessage(),"Logged in success");
+
+    }
+    @Test(dataProvider = "LoginData", dataProviderClass = DataProviderUser)
+    public void loginSuccessModelDP()
     {
         User user = new User().withEmail("doshka@mail.ru").withPassword("Koshka12$");
 

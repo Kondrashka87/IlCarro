@@ -36,6 +36,7 @@ public class HelperBase
 
     public void submit()
     {
+        pause(500);
         //click(By.xpath("//button[text()='Y’alla!']"));
         click(By.xpath("//button[@type='submit']"));
     }

@@ -1,0 +1,5 @@
+18:07:41.498  INFO  manager.ApplicationManager - All tests star in Chrome Browser
+18:07:59.913  INFO  manager.ApplicationManager - Current Url -->https://ilcarro.web.app/search
+18:08:08.574  INFO  tests.TestBase - Tests start with data : Car(location=Haifa, Israel, manufacture=BMW, model=N5, year=2020, fuel=Petrol, seats=4, clasS=C, carRegNumber=55-00-1208, price=65, about=very nice car)
+09:07:56.569  INFO  manager.ApplicationManager - All tests star in Chrome Browser
+09:07:59.153  INFO  manager.ApplicationManager - Current Url -->https://ilcarro.web.app/search
